@@ -3,21 +3,22 @@ package com.example.quizgame;
 public class Question {
     private int mTextResId;
     private boolean mAnswerTrue;
-    public int getmTextResId() {
+    public int getTextResId() {
         return mTextResId;
     }
 
-    public void setmTextResId(int mTextResId) {
+    public void setTextResId(int mTextResId) {
         this.mTextResId = mTextResId;
     }
 
-    public boolean ismAnswerTrue() {
+    public boolean isAnswerTrue() {
         return mAnswerTrue;
     }
 
-    public void setmAnswerTrue(boolean mAnswerTrue) {
+    public void setAnswerTrue(boolean mAnswerTrue) {
         this.mAnswerTrue = mAnswerTrue;
     }
+
     public Question(int textResId, boolean answerTrue) {
         mTextResId = textResId;
         mAnswerTrue = answerTrue;
