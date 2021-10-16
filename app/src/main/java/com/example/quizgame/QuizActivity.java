@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
+    private static final String TAG = "QuizActivity";
+    private static final String KEY_INDEX = "index";
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -18,12 +20,12 @@ public class QuizActivity extends AppCompatActivity {
     private Button mPrevButton;
     private TextView mQuestionTextView;
     private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.question_australia, true),
-            new Question(R.string.question_oceans, true),
-            new Question(R.string.question_mideast, false),
-            new Question(R.string.question_africa, false),
-            new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true),
+            new Question(R.string.question_ferrari, false),
+            new Question(R.string.question_bmw, true),
+            new Question(R.string.question_tesla, false),
+            new Question(R.string.question_lamborghini, true),
+            new Question(R.string.question_audi, true),
+            new Question(R.string.question_koenigsegg, true),
     };
     private int mCurrentIndex = 0;
 
@@ -31,6 +33,10 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mQuestionTextView.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +88,13 @@ public class QuizActivity extends AppCompatActivity {
         updateQuestion();
 
     }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+            savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+    }
+
+
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
