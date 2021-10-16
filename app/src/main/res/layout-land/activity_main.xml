@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/false_button"
             android:layout_margin="5dp"/>
-            />
+
     </LinearLayout>
 
         <Button
